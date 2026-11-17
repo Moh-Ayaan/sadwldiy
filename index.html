@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ayaan // Futuristic Robot & SpaceX Telemetry Portfolio</title>
+  <!-- Futuristic & Monospace Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@400;500;600;700&family=JetBrains+Mono:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- HUD Ambient Grid & Scanlines -->
+  <div class="hud-grid"></div>
+  <div class="scanlines"></div>
+
+  <!-- SpaceX Style Fixed Telemetry Header / Nav -->
+  <header class="telemetry-bar">
+    <div class="brand-zone">
+      <div class="radar-dot"></div>
+      <span class="brand-title">SPACEX // AVIONICS CORE</span>
+      <span class="badge live">LIVE FEED</span>
+    </div>
+    <nav class="flight-nav">
+      <a href="#hero" class="nav-item"><span class="code">01</span> HERO</a>
+      <a href="#profile" class="nav-item"><span class="code">02</span> PILOT</a>
+      <a href="#skills" class="nav-item"><span class="code">03</span> SYSTEMS</a>
+      <a href="#mission" class="nav-item"><span class="code">04</span> MISSION</a>
+      <a href="#academy" class="nav-item"><span class="code">05</span> BASE</a>
+    </nav>
+    <div class="telemetry-stats">
+      <div class="stat"><span class="stat-lbl">T-PLUS</span><span class="stat-val">STAGE-1</span></div>
+      <div class="stat"><span class="stat-lbl">STATUS</span><span class="stat-val accent">NOMINAL</span></div>
+    </div>
+  </header>
+
+  <!-- Interactive Scroll Snap Container -->
+  <main class="scroll-container">
+
+    <!-- SECTION 1: HERO -->
+    <section id="hero" class="space-section hero-section">
+      <div class="bg-layer hero-bg"></div>
+      <div class="vignette"></div>
+
+      <div class="hero-content">
+        <div class="hud-tag">
+          <span class="crosshair">+</span>
+          <span>AUTONOMOUS AVIONICS PROTOCOL v2.4</span>
+          <span class="crosshair">+</span>
+        </div>
+        
+        <h1 class="glitch-title" data-text="Futuristic Robot">Futuristic Robot</h1>
+        
+        <p class="hero-tagline">
+          NEXT-GEN EXPLORATION PLATFORM POWERED BY COMPUTATIONAL LOGIC &amp; CODE
+        </p>
+
+        <!-- Technical Telemetry Data Bar -->
+        <div class="telemetry-data-strip">
+          <div class="data-block">
+            <span class="lbl">DESIGNATION</span>
+            <span class="val">AYAAN // MK-I</span>
+          </div>
+          <div class="data-block">
+            <span class="lbl">PROPULSION</span>
+            <span class="val">PYTHON CORE</span>
+          </div>
+          <div class="data-block">
+            <span class="lbl">MISSION CLASS</span>
+            <span class="val">SIH DEPLOYED</span>
+          </div>
+          <div class="data-block">
+            <span class="lbl">TRAJECTORY</span>
+            <span class="val">EARTH &rarr; MARS</span>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a href="#profile" class="spacex-btn">
+            <span class="btn-text">INITIALIZE SYSTEM</span>
+            <span class="btn-arrow">&darr;</span>
+          </a>
+          <a href="#skills" class="spacex-btn ghost">
+            <span class="btn-text">VIEW CAPABILITIES</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="scroll-indicator">
+        <span class="scroll-label">SCROLL DOWN TO ENGAGE</span>
+        <div class="chevrons">
+          <div class="chevron"></div>
+          <div class="chevron"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: PILOT PROFILE (ABOUT) -->
+    <section id="profile" class="space-section profile-section">
+      <div class="bg-layer profile-bg"></div>
+      <div class="vignette"></div>
+
+      <div class="section-container">
+        <div class="hud-header">
+          <span class="section-idx">// 02 &bull; TELEMETRY DOSSIER</span>
+          <h2 class="section-title">COMMANDER PROFILE</h2>
+          <div class="hud-line"></div>
+        </div>
+
+        <div class="profile-grid">
+          <!-- Left: Technical ID Card -->
+          <div class="hud-panel profile-card">
+            <div class="panel-corner top-left"></div>
+            <div class="panel-corner top-right"></div>
+            <div class="panel-corner btm-left"></div>
+            <div class="panel-corner btm-right"></div>
+
+            <div class="card-id-header">
+              <span class="id-code">CREW-ID: #AY-2026-CSE</span>
+              <span class="status-indicator">STANDBY // ACTIVE</span>
+            </div>
+
+            <div class="photo-scanner">
+              <div class="scanner-laser"></div>
+              <div class="reticle"></div>
+              <div class="cad-silhouette">
+                <span class="robot-icon">&xutri;</span>
+                <span class="cad-text">AYAAN // CSE CADRE</span>
+              </div>
+            </div>
+
+            <div class="profile-details">
+              <div class="detail-row">
+                <span class="d-label">OPERATOR NAME:</span>
+                <span class="d-value name-highlight">Ayaan</span>
+              </div>
+              <div class="detail-row">
+                <span class="d-label">FLIGHT ROLE:</span>
+                <span class="d-value">1st Year CSE Cadet &amp; Developer</span>
+              </div>
+              <div class="detail-row">
+                <span class="d-label">SPECIALIZATION:</span>
+                <span class="d-value">Robotics, Algorithmic Logic &amp; System CLI</span>
+              </div>
+              <div class="detail-row">
+                <span class="d-label">BASE STATION:</span>
+                <span class="d-value">Newton's School of Technology, HYD</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Terminal Mission Statement -->
+          <div class="hud-panel terminal-card">
+            <div class="terminal-bar-top">
+              <span class="term-dot red"></span>
+              <span class="term-dot yellow"></span>
+              <span class="term-dot green"></span>
+              <span class="term-title">terminal@falcon-stage1: ~/pilot/bio</span>
+            </div>
+            <div class="terminal-body">
+              <p class="term-prompt"><span class="usr">cadet@ayaan</span>:<span class="dir">~</span>$ whoami</p>
+              <p class="term-output">Ayaan — First Year Computer Science &amp; Engineering Student.</p>
+              
+              <p class="term-prompt"><span class="usr">cadet@ayaan</span>:<span class="dir">~</span>$ cat mission_objective.md</p>
+              <p class="term-output text-dim">
+                &gt; "Building intelligent autonomous systems and futuristic robotics with computational vigor."<br/>
+                &gt; Focused on the intersection of aerospace automation, low-level system terminals, and rigorous physics simulations.
+              </p>
+
+              <p class="term-prompt"><span class="usr">cadet@ayaan</span>:<span class="dir">~</span>$ fetch --specs</p>
+              <div class="term-table">
+                <div><span>[CORE]</span> Computer Science Engineering</div>
+                <div><span>[YEAR]</span> First Year (Class of 2029)</div>
+                <div><span>[FOCUS]</span> Python Scripts / CLI Automation / SIH</div>
+                <div><span>[STATUS]</span> Ready for Mission Payload Deployment</div>
+              </div>
+
+              <div class="cursor-line">
+                <span class="usr">cadet@ayaan</span>:<span class="dir">~</span>$ <span class="blink">_</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: SKILLS (SYSTEMS & TELEMETRY) -->
+    <section id="skills" class="space-section skills-section">
+      <div class="bg-layer skills-bg"></div>
+      <div class="vignette"></div>
+
+      <div class="section-container">
+        <div class="hud-header">
+          <span class="section-idx">// 03 &bull; THRUSTER &amp; COMPUTE MATRIX</span>
+          <h2 class="section-title">TECHNICAL AVIONICS</h2>
+          <div class="hud-line"></div>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Skill Card 1: Python -->
+          <div class="hud-panel skill-card">
+            <div class="card-glow"></div>
+            <div class="skill-header">
+              <span class="skill-sys-id">SUBSYSTEM 01</span>
+              <span class="skill-tag">HIGH LEVEL LOGIC</span>
+            </div>
+            <div class="skill-icon-wrap">
+              <div class="circle-radar"></div>
+              <span class="icon-glyph">&lambda;</span>
+            </div>
+            <h3 class="skill-name">PYTHON</h3>
+            <p class="skill-desc">
+              Developing autonomous algorithms, robotic telemetry loggers, data pipelines, and intelligent backends.
+            </p>
+            <div class="telemetry-bar-chart">
+              <div class="bar-fill py-fill"></div>
+            </div>
+            <div class="skill-metric">
+              <span>OUTPUT POTENTIAL</span>
+              <span class="pct">MAX EFFICIENCY</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 2: CLI -->
+          <div class="hud-panel skill-card">
+            <div class="card-glow"></div>
+            <div class="skill-header">
+              <span class="skill-sys-id">SUBSYSTEM 02</span>
+              <span class="skill-tag">OPERATIONAL CONTROL</span>
+            </div>
+            <div class="skill-icon-wrap">
+              <div class="circle-radar"></div>
+              <span class="icon-glyph">&gt;_</span>
+            </div>
+            <h3 class="skill-name">CLI &amp; TERMINAL</h3>
+            <p class="skill-desc">
+              Direct terminal operations, bash automation, shell piping, process management, and Git version control.
+            </p>
+            <div class="telemetry-bar-chart">
+              <div class="bar-fill cli-fill"></div>
+            </div>
+            <div class="skill-metric">
+              <span>COMMAND EXECUTION</span>
+              <span class="pct">ZERO LATENCY</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 3: Mathematics -->
+          <div class="hud-panel skill-card">
+            <div class="card-glow"></div>
+            <div class="skill-header">
+              <span class="skill-sys-id">SUBSYSTEM 03</span>
+              <span class="skill-tag">ORBITAL MECHANICS</span>
+            </div>
+            <div class="skill-icon-wrap">
+              <div class="circle-radar"></div>
+              <span class="icon-glyph">&sum;</span>
+            </div>
+            <h3 class="skill-name">MATHEMATICS</h3>
+            <p class="skill-desc">
+              Linear algebra, calculus, discrete math, and probability powering robotic motion and vector algorithms.
+            </p>
+            <div class="telemetry-bar-chart">
+              <div class="bar-fill math-fill"></div>
+            </div>
+            <div class="skill-metric">
+              <span>FOUNDATION</span>
+              <span class="pct">100% RIGOROUS</span>
+            </div>
+          </div>
+
+          <!-- Skill Card 4: Physics -->
+          <div class="hud-panel skill-card">
+            <div class="card-glow"></div>
+            <div class="skill-header">
+              <span class="skill-sys-id">SUBSYSTEM 04</span>
+              <span class="skill-tag">KINEMATICS &amp; DYNAMICS</span>
+            </div>
+            <div class="skill-icon-wrap">
+              <div class="circle-radar"></div>
+              <span class="icon-glyph">&Phi;</span>
+            </div>
+            <h3 class="skill-name">PHYSICS</h3>
+            <p class="skill-desc">
+              Mechanics, gravitation, electromagnetic principles, and sensor kinematics for realistic robot dynamics.
+            </p>
+            <div class="telemetry-bar-chart">
+              <div class="bar-fill phys-fill"></div>
+            </div>
+            <div class="skill-metric">
+              <span>SIMULATION</span>
+              <span class="pct">EMPIRICAL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: PARTICIPATION (MISSION LOG: SIH) -->
+    <section id="mission" class="space-section mission-section">
+      <div class="bg-layer mission-bg"></div>
+      <div class="vignette"></div>
+
+      <div class="section-container">
+        <div class="hud-header">
+          <span class="section-idx">// 04 &bull; DEPLOYMENT HISTORY</span>
+          <h2 class="section-title">HACKATHON MISSIONS</h2>
+          <div class="hud-line"></div>
+        </div>
+
+        <div class="mission-wrapper">
+          <div class="hud-panel mission-badge-panel">
+            <div class="mission-status-pill">MISSION VERIFIED &bull; NATIONAL LEVEL</div>
+            <div class="patch-art">
+              <div class="orbit-ring ring-1"></div>
+              <div class="orbit-ring ring-2"></div>
+              <div class="patch-center">
+                <span class="badge-acronym">SIH</span>
+                <span class="badge-sub">INDIA</span>
+              </div>
+            </div>
+            <div class="badge-meta">
+              <span class="b-item">CODE: SIH-HACKATHON</span>
+              <span class="b-item">CADRE: INNOVATOR</span>
+            </div>
+          </div>
+
+          <div class="hud-panel mission-intel-panel">
+            <div class="intel-header">
+              <h3>SMART INDIA HACKATHON (SIH)</h3>
+              <span class="intel-badge">NATIONAL ARENA</span>
+            </div>
+            <p class="intel-tagline">
+              Nationwide technological hackathon tackling mission-critical real-world problem statements.
+            </p>
+
+            <div class="intel-specs">
+              <div class="spec-box">
+                <span class="s-label">MISSION CONTEXT</span>
+                <span class="s-val">Government of India &amp; Industry Problems</span>
+              </div>
+              <div class="spec-box">
+                <span class="s-label">ROLE IN ARENA</span>
+                <span class="s-val">Rapid Prototyping &amp; Algorithmic Engineering</span>
+              </div>
+              <div class="spec-box">
+                <span class="s-label">CHALLENGE VECTOR</span>
+                <span class="s-val">Collaborative Sprint Under Pressure</span>
+              </div>
+              <div class="spec-box">
+                <span class="s-label">LEARNING OUTCOME</span>
+                <span class="s-val">High-Stake Code Architecture</span>
+              </div>
+            </div>
+
+            <div class="terminal-log-stream">
+              <div class="log-entry"><span class="log-time">[T+00:00:01]</span> Registered mission payload for Smart India Hackathon.</div>
+              <div class="log-entry"><span class="log-time">[T+12:45:00]</span> Designed problem solution architecture with teammate cadre.</div>
+              <div class="log-entry"><span class="log-time">[T+24:00:00]</span> Executed full codebase sprint. Prototype functional.</div>
+              <div class="log-entry success"><span class="log-time">[T+COMPLETED]</span> Mission accomplished with flying telemetry feedback.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: BASE CAMP / COLLEGE -->
+    <section id="academy" class="space-section academy-section">
+      <div class="bg-layer academy-bg"></div>
+      <div class="vignette"></div>
+
+      <div class="section-container">
+        <div class="hud-header">
+          <span class="section-idx">// 05 &bull; COMMAND BASE &amp; ACADEMY</span>
+          <h2 class="section-title">HEADQUARTERS</h2>
+          <div class="hud-line"></div>
+        </div>
+
+        <div class="academy-card hud-panel">
+          <div class="academy-left">
+            <div class="radar-scan-box">
+              <div class="sweep-arm"></div>
+              <div class="radar-coords">
+                <span>LAT: 17.3850&deg; N</span>
+                <span>LON: 78.4867&deg; E</span>
+              </div>
+              <div class="geo-ping"></div>
+            </div>
+          </div>
+
+          <div class="academy-right">
+            <span class="hq-label">INCUBATION BASE // HYDERABAD, INDIA</span>
+            <h3 class="hq-name">Newton's School of Technology</h3>
+            <p class="hq-city">Hyderabad Campus &bull; Department of Computer Science &amp; Engineering</p>
+            
+            <p class="hq-desc">
+              Currently pursuing 1st Year B.Tech in CSE. Immersed in industry-driven computing coursework, algorithms, systems design, and hands-on robotics research labs.
+            </p>
+
+            <div class="stats-row">
+              <div class="s-item">
+                <span class="s-num">YEAR 01</span>
+                <span class="s-lbl">CURRENT STAGE</span>
+              </div>
+              <div class="s-item">
+                <span class="s-num">CSE</span>
+                <span class="s-lbl">DISCIPLINE</span>
+              </div>
+              <div class="s-item">
+                <span class="s-num">NST-HYD</span>
+                <span class="s-lbl">SPACEPORT</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Footer Transmission within final section -->
+        <footer class="spacex-footer">
+          <div class="footer-grid">
+            <div class="f-brand">
+              <span class="f-logo">AYAAN // FUTURISTIC ROBOT</span>
+              <p>Built with pure HTML &amp; CSS &bull; SpaceX Aerospace Console Inspired</p>
+            </div>
+            <div class="f-nav">
+              <a href="#hero">RETURN TO LAUNCH PAD &uarr;</a>
+            </div>
+          </div>
+          <div class="telemetry-bar-btm">
+            <span>TRANSMISSION ENCRYPTED</span>
+            <span>&bull; ALL SYSTEMS GO &bull;</span>
+            <span>2026 AYAAN &copy; ALL RIGHTS RESERVED</span>
+          </div>
+        </footer>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

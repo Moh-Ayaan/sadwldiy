@@ -1,0 +1,1221 @@
+/* ========================================================
+   SPACEX AVIONICS & CODING THEME - PURE CSS
+   Target: Futuristic Robot Portfolio (Ayaan)
+   ======================================================== */
+
+:root {
+  --bg-deep-space: #030508;
+  --bg-panel: rgba(10, 14, 22, 0.78);
+  --bg-panel-hover: rgba(14, 20, 32, 0.9);
+  --border-subtle: rgba(0, 240, 255, 0.18);
+  --border-bright: #00f0ff;
+  --accent-cyan: #00f0ff;
+  --accent-blue: #0077ff;
+  --accent-amber: #ffaa00;
+  --accent-green: #00ff66;
+  --text-main: #f0f4f8;
+  --text-muted: #8899aa;
+  --text-dim: #556677;
+  
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --font-hud: 'Orbitron', -apple-system, sans-serif;
+  --font-body: 'Rajdhani', -apple-system, sans-serif;
+}
+
+/* Global Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-deep-space);
+  color: var(--text-main);
+  font-family: var(--font-body);
+  font-size: 16px;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg-deep-space);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* ========================================================
+   HUD OVERLAYS & SCANLINES
+   ======================================================== */
+.hud-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 100;
+  background-image: 
+    linear-gradient(to right, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 101;
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+  opacity: 0.6;
+}
+
+/* ========================================================
+   TELEMETRY HEADER (FIXED SPACEX BAR)
+   ======================================================== */
+.telemetry-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(3, 5, 8, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 200;
+  font-family: var(--font-mono);
+}
+
+.brand-zone {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.radar-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--accent-cyan);
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.4; }
+}
+
+.brand-title {
+  font-family: var(--font-hud);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.badge.live {
+  font-size: 0.65rem;
+  padding: 2px 6px;
+  background: rgba(0, 255, 102, 0.15);
+  border: 1px solid var(--accent-green);
+  color: var(--accent-green);
+  letter-spacing: 1px;
+}
+
+.flight-nav {
+  display: flex;
+  gap: 1.8rem;
+}
+
+.flight-nav .nav-item {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  transition: all 0.25s ease;
+  position: relative;
+  padding: 4px 0;
+}
+
+.flight-nav .nav-item .code {
+  color: var(--accent-cyan);
+  margin-right: 4px;
+}
+
+.flight-nav .nav-item:hover {
+  color: #fff;
+  text-shadow: 0 0 8px var(--accent-cyan);
+}
+
+.flight-nav .nav-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-cyan);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 6px var(--accent-cyan);
+}
+
+.flight-nav .nav-item:hover::after {
+  width: 100%;
+}
+
+.telemetry-stats {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.telemetry-stats .stat {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7rem;
+}
+
+.stat-lbl {
+  color: var(--text-dim);
+}
+
+.stat-val {
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+.stat-val.accent {
+  color: var(--accent-cyan);
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.6);
+}
+
+/* ========================================================
+   SCROLL SNAP CONTAINER & FULLSCREEN SECTIONS
+   ======================================================== */
+.scroll-container {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
+.space-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 80px 2rem 40px;
+}
+
+/* Background Photographic Layers with Parallax Fixed Attachment */
+.bg-layer {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: 1;
+  filter: brightness(0.45) contrast(1.15);
+  transition: transform 0.5s ease;
+}
+
+/* Photographed space, robotics, rockets from high quality stock */
+.hero-bg {
+  background-image: url('https://images.unsplash.com/photo-1517976487507-573516518a6a?auto=format&fit=crop&w=2000&q=85'); /* SpaceX Falcon Rocket Thruster Launch */
+}
+
+.profile-bg {
+  background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2000&q=85'); /* Satellite Earth Orbit Telemetry */
+}
+
+.skills-bg {
+  background-image: url('https://images.unsplash.com/photo-1484704849700-f032a568e944?auto=format&fit=crop&w=2000&q=85'); /* Robotic Hardware / High-tech console */
+}
+
+.mission-bg {
+  background-image: url('https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=2000&q=85'); /* SpaceX Starship rocket launch trajectory */
+}
+
+.academy-bg {
+  background-image: url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?auto=format&fit=crop&w=2000&q=85'); /* Observatory / Space Center Hyderabad vibe */
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: radial-gradient(circle at center, rgba(3, 5, 8, 0.4) 0%, rgba(3, 5, 8, 0.95) 85%);
+  pointer-events: none;
+}
+
+.section-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Section Header Bar */
+.hud-header {
+  margin-bottom: 2rem;
+}
+
+.section-idx {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--accent-cyan);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.section-title {
+  font-family: var(--font-hud);
+  font-size: 2.2rem;
+  letter-spacing: 3px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.hud-line {
+  width: 100%;
+  height: 1px;
+  margin-top: 0.8rem;
+  background: linear-gradient(to right, var(--accent-cyan), rgba(0, 240, 255, 0.2), transparent);
+}
+
+/* ========================================================
+   SECTION 1: HERO
+   ======================================================== */
+.hero-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.hud-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 2.5px;
+  color: var(--accent-cyan);
+  border: 1px solid var(--border-subtle);
+  background: rgba(0, 240, 255, 0.05);
+  padding: 6px 16px;
+  margin-bottom: 1.5rem;
+  border-radius: 2px;
+}
+
+.crosshair {
+  color: var(--accent-cyan);
+  font-weight: bold;
+}
+
+.glitch-title {
+  font-family: var(--font-hud);
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 900;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+  text-shadow: 
+    0 0 20px rgba(0, 240, 255, 0.4),
+    0 0 60px rgba(0, 119, 255, 0.2);
+  position: relative;
+}
+
+.hero-tagline {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  color: var(--text-muted);
+  max-width: 680px;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+/* Telemetry Data Strip */
+.telemetry-data-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 2.5rem;
+  border: 1px solid var(--border-subtle);
+  background: rgba(8, 12, 18, 0.65);
+  backdrop-filter: blur(8px);
+  padding: 1rem;
+}
+
+.data-block {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  border-right: 1px solid rgba(0, 240, 255, 0.1);
+}
+
+.data-block:last-child {
+  border-right: none;
+}
+
+.data-block .lbl {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 1.5px;
+}
+
+.data-block .val {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin-top: 4px;
+}
+
+/* Buttons */
+.cta-row {
+  display: flex;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.spacex-btn {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-decoration: none;
+  color: #030508;
+  background: var(--accent-cyan);
+  padding: 0.9rem 2.2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-weight: 700;
+  border: 1px solid var(--accent-cyan);
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+.spacex-btn:hover {
+  background: #ffffff;
+  border-color: #ffffff;
+  color: #000;
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+}
+
+.spacex-btn.ghost {
+  background: transparent;
+  color: var(--accent-cyan);
+  box-shadow: none;
+}
+
+.spacex-btn.ghost:hover {
+  background: rgba(0, 240, 255, 0.15);
+  color: #fff;
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 25px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.scroll-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+}
+
+.chevrons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.chevron {
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--accent-cyan);
+  border-bottom: 2px solid var(--accent-cyan);
+  transform: rotate(45deg);
+  animation: pulseChevron 2s infinite;
+}
+
+.chevron:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+@keyframes pulseChevron {
+  0% { opacity: 0; transform: rotate(45deg) translate(-4px, -4px); }
+  50% { opacity: 1; }
+  100% { opacity: 0; transform: rotate(45deg) translate(4px, 4px); }
+}
+
+/* ========================================================
+   COMMON HUD PANELS WITH CORNER BRACKETS
+   ======================================================== */
+.hud-panel {
+  position: relative;
+  background: var(--bg-panel);
+  border: 1px solid var(--border-subtle);
+  padding: 1.8rem;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: all 0.3s ease;
+}
+
+.hud-panel:hover {
+  border-color: rgba(0, 240, 255, 0.5);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 240, 255, 0.15);
+}
+
+.panel-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-color: var(--accent-cyan);
+  pointer-events: none;
+}
+.panel-corner.top-left { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
+.panel-corner.top-right { top: -1px; right: -1px; border-top: 2px solid; border-right: 2px solid; }
+.panel-corner.btm-left { bottom: -1px; left: -1px; border-bottom: 2px solid; border-left: 2px solid; }
+.panel-corner.btm-right { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
+
+/* ========================================================
+   SECTION 2: PROFILE & TERMINAL
+   ======================================================== */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 2rem;
+}
+
+/* Left: ID Card */
+.card-id-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 1.2rem;
+}
+
+.id-code {
+  color: var(--text-dim);
+}
+
+.status-indicator {
+  color: var(--accent-green);
+  font-weight: 700;
+}
+
+.photo-scanner {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  background: rgba(0, 240, 255, 0.03);
+  border: 1px dashed var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+.scanner-laser {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--accent-cyan), transparent);
+  box-shadow: 0 0 15px var(--accent-cyan);
+  animation: scanLaser 3s ease-in-out infinite alternate;
+}
+
+@keyframes scanLaser {
+  0% { top: 0%; }
+  100% { top: 97%; }
+}
+
+.cad-silhouette {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.robot-icon {
+  font-size: 3rem;
+  color: var(--accent-cyan);
+  text-shadow: 0 0 15px var(--accent-cyan);
+}
+
+.cad-text {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 3px;
+  color: var(--text-muted);
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  font-family: var(--font-mono);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.5rem;
+}
+
+.d-label {
+  color: var(--text-dim);
+}
+
+.d-value {
+  color: #fff;
+  font-weight: 600;
+}
+
+.name-highlight {
+  color: var(--accent-cyan);
+  font-size: 1.1rem;
+  font-family: var(--font-hud);
+  letter-spacing: 1px;
+}
+
+/* Right: SpaceX Terminal */
+.terminal-card {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+}
+
+.terminal-bar-top {
+  background: #080c12;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.term-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.term-dot.red { background: #ff5f56; }
+.term-dot.yellow { background: #ffbd2e; }
+.term-dot.green { background: #27c93f; }
+
+.term-title {
+  margin-left: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.terminal-body {
+  padding: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+.term-prompt {
+  margin-top: 0.8rem;
+}
+
+.term-prompt .usr {
+  color: var(--accent-cyan);
+}
+
+.term-prompt .dir {
+  color: var(--accent-blue);
+}
+
+.term-output {
+  color: #fff;
+  margin-left: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.term-output.text-dim {
+  color: var(--text-muted);
+}
+
+.term-table {
+  margin: 0.8rem 0 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  color: #ddd;
+}
+
+.term-table span {
+  color: var(--accent-green);
+  margin-right: 0.5rem;
+}
+
+.cursor-line {
+  margin-top: 1rem;
+}
+
+.blink {
+  animation: blinkCursor 1s step-end infinite;
+  color: var(--accent-cyan);
+  font-weight: bold;
+}
+
+@keyframes blinkCursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ========================================================
+   SECTION 3: SKILLS (SYSTEMS & TELEMETRY MATRIX)
+   ======================================================== */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.skill-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent-cyan);
+}
+
+.card-glow {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.25), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  margin-bottom: 1.2rem;
+}
+
+.skill-sys-id {
+  color: var(--accent-cyan);
+}
+
+.skill-tag {
+  color: var(--text-dim);
+}
+
+.skill-icon-wrap {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  background: rgba(0, 240, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+}
+
+.icon-glyph {
+  font-family: var(--font-hud);
+  font-size: 1.5rem;
+  color: var(--accent-cyan);
+}
+
+.skill-name {
+  font-family: var(--font-hud);
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  color: #fff;
+  margin-bottom: 0.6rem;
+}
+
+.skill-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  min-height: 54px;
+}
+
+.telemetry-bar-chart {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 0.6rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--accent-blue), var(--accent-cyan));
+  box-shadow: 0 0 10px var(--accent-cyan);
+  transition: width 1s ease;
+}
+
+.py-fill { width: 92%; }
+.cli-fill { width: 88%; }
+.math-fill { width: 95%; }
+.phys-fill { width: 90%; }
+
+.skill-metric {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+}
+
+.skill-metric .pct {
+  color: var(--accent-cyan);
+  font-weight: 600;
+}
+
+/* ========================================================
+   SECTION 4: PARTICIPATION (MISSION LOG / SIH)
+   ======================================================== */
+.mission-wrapper {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 2rem;
+}
+
+.mission-badge-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 2.5rem 1.5rem;
+}
+
+.mission-status-pill {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--accent-green);
+  border: 1px solid var(--accent-green);
+  background: rgba(0, 255, 102, 0.08);
+  padding: 4px 10px;
+  margin-bottom: 2rem;
+}
+
+.patch-art {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  background: radial-gradient(circle, #0e1624, #05080e);
+  border: 2px solid var(--accent-cyan);
+  box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+}
+
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(0, 240, 255, 0.4);
+}
+
+.ring-1 {
+  width: 170px;
+  height: 170px;
+  animation: rotateClockwise 16s linear infinite;
+}
+
+.ring-2 {
+  width: 195px;
+  height: 195px;
+  border-color: rgba(0, 119, 255, 0.3);
+  animation: rotateCounter 22s linear infinite;
+}
+
+@keyframes rotateClockwise {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes rotateCounter {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+.patch-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+}
+
+.badge-acronym {
+  font-family: var(--font-hud);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.badge-sub {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  color: var(--accent-cyan);
+}
+
+.badge-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+/* Mission Intel Panel */
+.intel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.intel-header h3 {
+  font-family: var(--font-hud);
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+
+.intel-badge {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  background: rgba(255, 170, 0, 0.15);
+  border: 1px solid var(--accent-amber);
+  color: var(--accent-amber);
+}
+
+.intel-tagline {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+}
+
+.intel-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+
+.spec-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid var(--border-subtle);
+  padding: 0.8rem 1rem;
+}
+
+.s-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  margin-bottom: 0.3rem;
+}
+
+.s-val {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: #fff;
+  font-weight: 600;
+}
+
+.terminal-log-stream {
+  background: #04070c;
+  border: 1px solid var(--border-subtle);
+  padding: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.log-entry {
+  color: var(--text-muted);
+}
+
+.log-entry .log-time {
+  color: var(--accent-cyan);
+  margin-right: 0.5rem;
+}
+
+.log-entry.success {
+  color: var(--accent-green);
+}
+
+/* ========================================================
+   SECTION 5: ACADEMY (NEWTON'S SCHOOL OF TECHNOLOGY)
+   ======================================================== */
+.academy-card {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.radar-scan-box {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  background: radial-gradient(circle, #09131f 0%, #03060a 90%);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sweep-arm {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 110px;
+  height: 110px;
+  transform-origin: 0% 0%;
+  background: conic-gradient(from 0deg, rgba(0, 240, 255, 0.45) 0deg, transparent 60deg);
+  animation: sweepRadar 4s linear infinite;
+}
+
+@keyframes sweepRadar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.geo-ping {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--accent-green);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--accent-green);
+}
+
+.radar-coords {
+  position: absolute;
+  bottom: 8px;
+  left: 10px;
+  right: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--accent-cyan);
+}
+
+.hq-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--accent-cyan);
+  letter-spacing: 2px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.hq-name {
+  font-family: var(--font-hud);
+  font-size: 2rem;
+  color: #fff;
+  letter-spacing: 2px;
+  margin-bottom: 0.3rem;
+}
+
+.hq-city {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+
+.hq-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #c0cdd8;
+  margin-bottom: 1.8rem;
+}
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.s-item {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-subtle);
+  padding: 0.8rem;
+  text-align: center;
+}
+
+.s-num {
+  display: block;
+  font-family: var(--font-hud);
+  font-size: 1.2rem;
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+.s-lbl {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 1.5px;
+}
+
+/* Footer Transmission */
+.spacex-footer {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 1.5rem;
+  font-family: var(--font-mono);
+}
+
+.footer-grid {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.f-brand .f-logo {
+  font-family: var(--font-hud);
+  font-size: 0.9rem;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.f-brand p {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+.f-nav a {
+  color: var(--accent-cyan);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+}
+
+.f-nav a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px var(--accent-cyan);
+}
+
+.telemetry-bar-btm {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+  padding-top: 0.8rem;
+}
+
+/* ========================================================
+   RESPONSIVE DESIGN (TABLETS & PHONES)
+   ======================================================== */
+@media (max-width: 900px) {
+  .telemetry-bar {
+    padding: 0 1rem;
+  }
+  .telemetry-stats, .flight-nav {
+    display: none;
+  }
+  .telemetry-data-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+  .mission-wrapper {
+    grid-template-columns: 1fr;
+  }
+  .academy-card {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+  .telemetry-bar-btm {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+}
